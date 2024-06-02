@@ -9,6 +9,26 @@
             "projectName": "demo",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<examen>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "es.sandana.demo.DemoApplication",
+            "projectName": "examen",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TiendaApplication<tienda>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "es.sandana.tienda.TiendaApplication",
+            "projectName": "tienda",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
