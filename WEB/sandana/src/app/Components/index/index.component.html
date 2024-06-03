@@ -1,15 +1,25 @@
-<div class=" flex items-center justify-center h-screen bg-gray-100 m-0 p-0">
-    <div class="logo-container h-screen size-2/6">
-        <img src="https://cdn.discordapp.com/attachments/1022640609351172147/1246913389524025424/logo.png?ex=665e1e16&is=665ccc96&hm=5c4ca70422c545515eb26f88b1ad652684f109caf77b36d2248879b6a3f02c6d&" alt="Logo">
+<div class="d-flex flex-column align-items-center position-relative w-100">
+    <!-- Contenedor para el logo -->
+    <div class="logo">
+      <img src="https://via.placeholder.com/100" alt="Logo">
     </div>
-    <div class="foto-container l-screen grid grid-cols-2 size-4/6 ">
-        <div class="foto woman m-2">
-            <img class="full-screen-img" src="https://cdn.discordapp.com/attachments/1022640609351172147/1246842475319136466/women.png?ex=665ddc0b&is=665c8a8b&hm=f11a2bae26e780e73978cb3dc5e6aa6913ed144110f8ef0497b09d2d33646656&" alt="La silueta de una mujer con su sombra en la pared blanca">
-            <div class="texto-superpuesto l-screen"><p>Mujer</p></div>
+    <!-- Contenedor de las tarjetas -->
+    <div class="row row-cols-1 row-cols-sm-2 g-3 justify-content-center mt-5">
+      <div class="col d-flex justify-content-center">
+        <div class="card foto bg-dark text-dark border-0 ">
+          <img src="https://cdn.discordapp.com/attachments/1022640609351172147/1246842475319136466/women.png?ex=665ddc0b&is=665c8a8b&hm=f11a2bae26e780e73978cb3dc5e6aa6913ed144110f8ef0497b09d2d33646656&" class="card-img" alt="card-img-overlay">
+          <div class="card-img-overlay border-0">
+            <h5 class="card-title">MUJER</h5>
+          </div>
         </div>
-        <div class="foto men m-2">
-            <img class="full-screen-img" src="https://cdn.discordapp.com/attachments/1022640609351172147/1246843640215638148/men.png?ex=665ddd21&is=665c8ba1&hm=a6358c8dd5b7e6381a060d32b2f9fbb82911afcfde2200bde543e657c3c7683a&" alt="La silueta de un hombre con su sombra en la pared blanca">
-            <div class="texto-superpuesto"><p>Hombre</p></div>
+      </div>
+      <div class="col d-flex justify-content-center">
+        <div class="card foto bg-dark border-0 foto">
+          <img src="https://cdn.discordapp.com/attachments/1022640609351172147/1246843640215638148/men.png?ex=665ddd21&is=665c8ba1&hm=a6358c8dd5b7e6381a060d32b2f9fbb82911afcfde2200bde543e657c3c7683a&" class="card-img" alt="card-img-overlay">
+          <div class="card-img-overlay d-flex justify-content-end align-items-start">
+            <h5 class="card-title text-light">HOMBRE</h5>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
