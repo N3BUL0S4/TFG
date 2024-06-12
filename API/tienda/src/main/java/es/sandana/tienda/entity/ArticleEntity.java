@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="article")
+@Table(name="articles")
 public class ArticleEntity {
     
 
@@ -34,7 +34,7 @@ public class ArticleEntity {
     @Column(name="SIZE")
 	private String size;
 
-    @Column(name="STOK")
+    @Column(name="STOCK")
 	private String stok;
 
 }
