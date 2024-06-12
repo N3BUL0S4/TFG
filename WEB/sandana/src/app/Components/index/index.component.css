@@ -19,22 +19,15 @@
 
 .logo {
   position: absolute;
-  top: 20px; /* Ajusta la posición vertical según sea necesario */
+  height: 100px;
+  top: 15px; /* Ajusta la posición vertical según sea necesario */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 20;
+  z-index: 2;
 }
 
 .foto-container {
   position: relative;
-}
-
-.logo-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
 }
 
 @media (max-width: 768px) {

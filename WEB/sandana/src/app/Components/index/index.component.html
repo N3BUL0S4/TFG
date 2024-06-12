@@ -1,25 +1,29 @@
 <div class="d-flex flex-column align-items-center position-relative w-100">
     <!-- Contenedor para el logo -->
-    <div class="logo">
-      <img src="https://via.placeholder.com/100" alt="Logo">
+    <div class="">
+      <img class="logo" src="https://i.imgur.com/OIN6Uaq.png" alt="Logo">
     </div>
     <!-- Contenedor de las tarjetas -->
     <div class="row row-cols-1 row-cols-sm-2 g-3 justify-content-center mt-5">
       <div class="col d-flex justify-content-center">
+      <button (click)="mujer()" class="border-0 p-0">
         <div class="card foto bg-dark text-dark border-0 ">
-          <img src="https://cdn.discordapp.com/attachments/1022640609351172147/1246842475319136466/women.png?ex=665ddc0b&is=665c8a8b&hm=f11a2bae26e780e73978cb3dc5e6aa6913ed144110f8ef0497b09d2d33646656&" class="card-img" alt="card-img-overlay">
-          <div class="card-img-overlay border-0">
+          <img src="https://i.imgur.com/TDn4XNg.png" class="card-img" alt="card-img-overlay">
+          <div class="card-img-overlay d-flex justify-content-start align-items-start">
             <h5 class="card-title">MUJER</h5>
           </div>
         </div>
+      </button>
       </div>
       <div class="col d-flex justify-content-center">
-        <div class="card foto bg-dark border-0 foto">
-          <img src="https://cdn.discordapp.com/attachments/1022640609351172147/1246843640215638148/men.png?ex=665ddd21&is=665c8ba1&hm=a6358c8dd5b7e6381a060d32b2f9fbb82911afcfde2200bde543e657c3c7683a&" class="card-img" alt="card-img-overlay">
-          <div class="card-img-overlay d-flex justify-content-end align-items-start">
-            <h5 class="card-title text-light">HOMBRE</h5>
+        <button (click)="hombre()" class="border-0 p-0">
+          <div class="card foto bg-dark border-0 foto">
+            <img src="https://i.imgur.com/SlOjK0N.png" class="card-img" alt="card-img-overlay">
+            <div class="card-img-overlay d-flex justify-content-end align-items-start">
+              <h5 class="card-title text-light">HOMBRE</h5>
+            </div>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   </div>

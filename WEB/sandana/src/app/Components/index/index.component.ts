@@ -13,4 +13,9 @@ export class IndexComponent {
     this.ruta.navigate(['listado'])
   }
 
+  hombre() {
+    this.ruta.navigate(['listado'])
+  }
+
+
 }
