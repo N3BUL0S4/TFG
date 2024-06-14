@@ -8,6 +8,9 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ListadoComponent } from './Components/listado/listado.component';
 import { RegisterComponent } from './Components/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreateArticleComponent } from './Components/create-article/create-article.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { RegisterComponent } from './Components/register/register.component';
     NavbarComponent,
     LoginComponent,
     ListadoComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateArticleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,24 +1,27 @@
 <div class="card">
   <div class="card-body">
-    <div class="logo-container">
-      <img class="logo" src="https://cdn.discordapp.com/attachments/1022640609351172147/1248019473445945485/image.png?ex=666ab5f5&is=66696475&hm=bf7ebd51dfd0038bad2e78699e9a4da8701dcd93f84a2d63baeee7ad2e0c15b3&" >
+    <div class="logo-container text-center mb-4">
+      <img class="logo" src="https://i.imgur.com/OIN6Uaq.png" alt="Logo">
     </div>
-    <form>
-      <div class="row mb-3">
-        <label for="inputEmail3" class="">Email</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" #email>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="inputEmail3" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail3" formControlName="email">
+        <div *ngIf="loginForm.controls['email']?.invalid && loginForm.controls['email']?.touched" class="text-danger">
+          <small *ngIf="loginForm.controls['email']?.errors?.['required']">Email es requerido</small>
+          <small *ngIf="loginForm.controls['email']?.errors?.['email']">Email no es válido</small>
         </div>
       </div>
-      <div class="row mb-3">
-        <label for="inputPassword3" class="">Password</label>
-        <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" #passwd>
+      <div class="mb-3">
+        <label for="inputPassword3" class="form-label">Password</label>
+        <input type="password" class="form-control" id="inputPassword3" formControlName="password">
+        <div *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched" class="text-danger">
+          <small *ngIf="loginForm.controls['password']?.errors?.['required']">Password es requerido</small>
         </div>
       </div>
       <div class="d-flex justify-content-between">
-        <div class="p-2"><button class="btn btn-secondary">Registrase</button></div>
-        <div class="p-2"><button type="submit" class="btn btn-primary">Iniciar sesion</button></div>
+        <button type="button" class="btn btn-secondary" (click)="register()">Registrarse</button>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Iniciar sesión</button>
       </div>
     </form>
   </div>

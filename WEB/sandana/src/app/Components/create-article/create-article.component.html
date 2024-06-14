@@ -1,0 +1,58 @@
+<div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="card w-75">
+      <div class="card-body">
+        <div class="text-center mb-4">
+          <h2>Crear Artículo</h2>
+        </div>
+        <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="inputModelo" class="form-label">Modelo</label>
+            <input type="text" class="form-control" id="inputModelo" formControlName="modelo">
+            <div *ngIf="articleForm.controls['modelo']?.invalid && articleForm.controls['modelo']?.touched" class="text-danger">
+              <small *ngIf="articleForm.controls['modelo']?.errors?.['required']">Modelo es requerido</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputDescripcion" class="form-label">Descripción</label>
+            <textarea class="form-control" id="inputDescripcion" formControlName="descripcion"></textarea>
+            <div *ngIf="articleForm.controls['descripcion']?.invalid && articleForm.controls['descripcion']?.touched" class="text-danger">
+              <small *ngIf="articleForm.controls['descripcion']?.errors?.['required']">Descripción es requerida</small>
+              <small *ngIf="articleForm.controls['descripcion']?.errors?.['maxlength']">Descripción no puede exceder los 255 caracteres</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputColor" class="form-label">Color</label>
+            <input type="color" class="form-control" id="inputColor" formControlName="color" value="#000000">
+            <div *ngIf="articleForm.controls['color']?.invalid && articleForm.controls['color']?.touched" class="text-danger">
+              <small *ngIf="articleForm.controls['color']?.errors?.['required']">Color es requerido</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputTalla" class="form-label">Talla</label>
+            <input type="text" class="form-control" id="inputTalla" formControlName="talla">
+            <div *ngIf="articleForm.controls['talla']?.invalid && articleForm.controls['talla']?.touched" class="text-danger">
+              <small *ngIf="articleForm.controls['talla']?.errors?.['required']">Talla es requerida</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputExistencia" class="form-label">Existencia</label>
+            <input type="number" class="form-control" id="inputExistencia" formControlName="existencia">
+            <div *ngIf="articleForm.controls['existencia']?.invalid && articleForm.controls['existencia']?.touched" class="text-danger">
+              <small *ngIf="articleForm.controls['existencia']?.errors?.['required']">Existencia es requerida</small>
+              <small *ngIf="articleForm.controls['existencia']?.errors?.['min']">Existencia no puede ser negativa</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="inputFotos" class="form-label">Fotos</label>
+            <input type="file" class="form-control" id="inputFotos" multiple>
+            <!-- Puedes usar "multiple" para permitir la selección de múltiples archivos -->
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="reset" class="btn btn-secondary">Resetear</button>
+            <button type="submit" class="btn btn-primary" [disabled]="articleForm.invalid">Crear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
