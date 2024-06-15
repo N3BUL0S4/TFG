@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { user } from '../../Models/user';
+import { UserService } from '../../Service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,8 +11,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
   registerForm!: FormGroup;
+  users:user[]=[];
+  user:user = new user("","","");
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public us:UserService, public ruta:Router) {
+    this.users = us.users;
+  }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -21,9 +28,28 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      console.log('Formulario válido:', this.registerForm.value);
-      alert("El usuario ya existe")
-      // Lógica para enviar los datos del formulario al servidor
+      let user:user = this.user
+      user.email = this.registerForm.value.email;
+      user.passwd = this.registerForm.value.password;
+      user.rol = this.registerForm.value.role
+      
+      this.users.forEach(u => {
+        if(u.email==user.email) {
+          
+          user.email=""
+          user.passwd=""
+          user.rol=""
+        }
+        
+      });
+      if (user.email!="") {
+        alert("Usuario credo correctamente")
+        this.us.create(user)
+        this.us.saveUser(user)
+        this.ruta.navigate(['listado']);
+      } else {
+        alert("El email ya existe")
+      }
     }
   }
 

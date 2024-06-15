@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent{
   users:user[]=[]
+  user:user = new user("","","")
   loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, public us: UserService, public ruta:Router) {
@@ -28,8 +29,18 @@ export class LoginComponent{
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log('Formulario válido:', this.loginForm.value);
-      alert("Inicio de sesion incorrecto")
-      // Lógica para enviar los datos del formulario al servidor
+      let user:user = this.user
+      user.email = this.loginForm.value.email;
+      user.passwd = this.loginForm.value.password;      
+      this.users.forEach(u => {
+        if(u.email==user.email) {
+          if(u.passwd==user.passwd) {
+            this.us.saveUser(u);
+            this.ruta.navigate(['listado']);
+          }
+        }
+        
+      });
     }
   }
 

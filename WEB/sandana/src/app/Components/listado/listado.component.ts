@@ -16,7 +16,6 @@ export class ListadoComponent {
   mediasId:media[]=[];
 
   constructor(public ms:MediaService, public as:ArticleService) {
-    console.log(this.articles.length);
     this.articles = as.articles
     this.articleFiltered = as.articles
     this.medias = this.ms.medias

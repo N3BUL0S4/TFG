@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { article } from '../../Models/article';
+import { ArticleService } from '../../Service/article.service';
 
 @Component({
   selector: 'app-create-article',
@@ -8,25 +10,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateArticleComponent {
   articleForm!: FormGroup;
+  article:article = new article(1,"","","","","")
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public as:ArticleService) {}
 
   ngOnInit(): void {
     this.articleForm = this.fb.group({
-      modelo: ['', [Validators.required]],
-      descripcion: ['', [Validators.required, Validators.maxLength(255)]],
+      model: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.maxLength(255)]],
       color: ['#000000', [Validators.required]],
-      talla: ['', [Validators.required]],
-      existencia: ['0', [Validators.required, Validators.min(0)]]
+      size: ['', [Validators.required]],
+      stock: ['0', [Validators.required, Validators.min(0)]]
     });
   }
 
   onSubmit(): void {
     if (this.articleForm.valid) {
-      console.log('Formulario válido:', this.articleForm.value);
-      this.articleForm.reset({
-      });
-      alert("No se a podido crear el artticulo")
+      let article = this.article
+      article.id = (this.as.articles[this.as.articles.length-1].id).valueOf()+1
+      article.model = this.articleForm.value.model
+      article.description = this.articleForm.value.description
+      article.color = this.articleForm.value.color
+      article.size = this.articleForm.value.size
+      article.stock = this.articleForm.value.stock
+      if (!this.as.findById(article.id)) {
+        alert("Artículo creardo correctamente")
+        this.as.create(article)
+      } else {
+        alert("Error al crear el artículo")
+      }
+      this.articleForm.reset()
     }
   }
 }

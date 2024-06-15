@@ -7,6 +7,7 @@ import { user } from '../Models/user';
 })
 export class UserService {
   users:user[]=[]
+  user:user = new user("","","");
   url="http://localhost:8081/user/findAll"
   
   constructor(public http:HttpClient) { 
@@ -20,4 +21,15 @@ export class UserService {
            })
   }
 
+  create(user:user) {
+    let url = "http://localhost:8081/user/create"
+    this.http.post(url,user)
+      .subscribe(response => {
+        console.log(response);
+      })
+  }
+
+  saveUser(user:user) {
+    this.user=user
+  }
 }

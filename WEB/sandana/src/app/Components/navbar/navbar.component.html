@@ -10,14 +10,21 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Inicio</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/crear">Crear</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="us.user.rol != 'employe' else create">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-          <button class="btn btn-outline-primary" (click)="login()">Log In</button>
+          <button *ngIf="us.user.rol.length == 0 else logout" class="btn btn-outline-primary" (click)="login()">Iniciar Sesion</button>
       </div>
     </div>
   </nav>
+  <ng-template #create>
+    <li class="nav-item" >
+      <a class="nav-link" href="/crear">Crear</a>
+    </li>
+  </ng-template>
+  <ng-template #logout>
+    <button class="btn btn-outline-danger" (click)="logOut()">Cerrar Sesion</button>
+  </ng-template>
+  
+  

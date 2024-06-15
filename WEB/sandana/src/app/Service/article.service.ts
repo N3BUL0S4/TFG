@@ -20,4 +20,27 @@ export class ArticleService {
             }
            })
   }
+
+  findById(id:Number){
+    let result=false;
+    this.http.get<article[]>(this.url)
+           .subscribe (response => {
+            if (response != null) {
+              response.forEach(a => {
+                if(a.id==id){
+                  result = true
+                }
+              });
+            }
+           })
+           return result;
+  }
+
+  create(article:article){
+    let url = "http://localhost:8081/Article/create"
+    this.http.post(url,article)
+      .subscribe(response => {
+        console.log(response);
+      })
+  }
 }
