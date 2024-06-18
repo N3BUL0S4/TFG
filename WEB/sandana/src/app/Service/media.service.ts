@@ -33,4 +33,11 @@ export class MediaService {
     return m
     }
 
-}
+    create(media: media) {
+      let url="http://localhost:8081/Media/create"
+      this.http.post(url,media)
+        .subscribe(response => {
+          console.log(response);
+        })
+    }
+} 

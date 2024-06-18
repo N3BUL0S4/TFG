@@ -39,7 +39,12 @@ export class CreateArticleComponent {
       } else {
         alert("Error al crear el artículo")
       }
+      console.log()
       this.articleForm.reset()
     }
+  }
+  
+  imagenes() {
+
   }
 }
