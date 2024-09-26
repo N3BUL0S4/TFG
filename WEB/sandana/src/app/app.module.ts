@@ -11,6 +11,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateArticleComponent } from './Components/create-article/create-article.component';
+import { CarritoComponent } from './Components/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateArticleComponent } from './Components/create-article/create-artic
     LoginComponent,
     ListadoComponent,
     RegisterComponent,
-    CreateArticleComponent
+    CreateArticleComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

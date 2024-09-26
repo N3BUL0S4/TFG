@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Carrito de Compras</h2>
+  
+    <!-- Tabla de productos del carrito -->
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of articles; let i = index">
+            <td>{{ item.name }}</td>
+            <td>{{ item.price | currency }}</td>
+            <td>
+              <input type="number" min="1" class="form-control w-50" (change)="updateCart(i)" />
+            </td>
+            <td>{{ item.price * item.quantity | currency }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="removeItem(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Resumen del carrito -->
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Total: {{ getTotalPrice() | currency }}</h4>
+        <button class="btn btn-success" (click)="checkout()">Proceder al Pago</button>
+      </div>
+    </div>
+  
+    <!-- Mensaje cuando el carrito está vacío -->
+    <ng-template #emptyCart>
+      <div class="alert alert-warning text-center" role="alert">
+        Tu carrito está vacío.
+      </div>
+    </ng-template>
+  </div>
+  

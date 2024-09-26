@@ -15,7 +15,7 @@
           <hr>
           <label class="m-1" for="">Modelo:</label>
           <select class="custom-select" (input)="Aplicarfiltro(hombre,mujer,modelo)" #modelo>
-            <option selected>Open this select menu</option>
+            <option selected>Seleciona un modelo</option>
             <option *ngFor="let m of getModels()" value="{{m}}">{{m}}</option>
           </select>
           <hr>

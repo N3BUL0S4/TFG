@@ -6,6 +6,7 @@ import { ListadoComponent } from './Components/listado/listado.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { CreateArticleComponent } from './Components/create-article/create-article.component';
+import { CarritoComponent } from './Components/carrito/carrito.component';
 
 const routes: Routes = [
   {path:'',component:IndexComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'navbar',component:NavbarComponent},
   {path:'register',component:RegisterComponent},
   {path:'crear',component:CreateArticleComponent},
+  {path:'carrito',component:CarritoComponent},
 ];
 
 @NgModule({

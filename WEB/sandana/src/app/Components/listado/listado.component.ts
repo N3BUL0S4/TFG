@@ -42,9 +42,9 @@ export class ListadoComponent {
   Aplicarfiltro(hombre:any,mujer:any,modelo:any) {
     this.articleFiltered=[]
     let articles:article[]= []
+    console.log(modelo.value)
     this.articles.forEach(a => {
-      console.log(a.model)
-      if (a.description.toLowerCase() === modelo.value.toLowerCase()) {
+      if (a.description.toLowerCase() == modelo.value.toLowerCase()) {
         articles.push(a)
       }
     });

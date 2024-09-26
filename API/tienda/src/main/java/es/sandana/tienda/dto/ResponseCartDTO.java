@@ -10,16 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResponseArticleDTO implements Serializable { 
+public class ResponseCartDTO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private Long id;
-	private String description;
-	private String model;
-	private String color;
-	private String size;
-	private String stok;
-	private String gender;
+	private Long idCart;
+	private Long idArticle;
+	private Long amount;
 	
 }
-

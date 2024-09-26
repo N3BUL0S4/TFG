@@ -36,6 +36,18 @@ export class ArticleService {
            return result;
   }
 
+  GetById(id:Number){
+    let result=false;
+    let articles:article[] = []
+    this.http.get<article[]>(this.url)
+           .subscribe (response => {
+            if (response != null) {
+              articles=response
+            }
+           })
+           return articles;
+    }
+
   create(article:article){
     let url = "http://localhost:8081/Article/create"
     this.http.post(url,article)

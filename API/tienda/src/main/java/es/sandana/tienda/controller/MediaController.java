@@ -1,4 +1,4 @@
-package es.sandana.tienda.controller;
+ package es.sandana.tienda.controller;
 
 import java.util.List;
 

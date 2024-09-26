@@ -35,6 +35,8 @@ public class ArticleEntity {
 	private String size;
 
     @Column(name="STOCK")
-	private String stok;
+    private String stok;
 
+    @Column(name="GENDER")
+    private String gender;
 }
