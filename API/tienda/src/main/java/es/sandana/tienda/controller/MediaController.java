@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.sandana.tienda.service.MediaService;
 import es.sandana.tienda.dto.ResponseMediaDTO;
+import es.sandana.tienda.service.MediaService;
 
 @RestController
 @RequestMapping("/Media")
@@ -30,7 +30,7 @@ public class MediaController {
 		return media != null ? ResponseEntity.ok(media) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 	}
-	
+
 	@GetMapping("/findAll")
 	public ResponseEntity<List<ResponseMediaDTO>> getAllMedia() {
 

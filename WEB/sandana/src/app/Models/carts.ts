@@ -1,12 +1,10 @@
-export class cart {
-    idCart: Number;
-    idArticle: Number;
-    amount: number;
+export class cart { 
+    cartId: Number;
+    userId: String;
 
-    constructor(idCart: Number, idArticle: Number, amount: number) {
-        this.idCart = idCart,
-        this.idArticle = idArticle,
-        this.amount = amount
+    constructor(cartId: Number, userId: String) {
+        this.cartId = cartId,
+        this.userId =userId
     }
 
 }

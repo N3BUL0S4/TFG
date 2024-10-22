@@ -35,7 +35,9 @@ export class LoginComponent{
       this.users.forEach(u => {
         if(u.email==user.email) {
           if(u.passwd==user.passwd) {
+            console.log(u);
             this.us.saveUser(u);
+
             this.ruta.navigate(['listado']);
           }
         }

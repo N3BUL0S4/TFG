@@ -1,6 +1,7 @@
 package es.sandana.tienda.dto;
 
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,6 @@ public class ResponseMediaDTO implements Serializable {
 	private Long id;
 	private Long articleId;
 	private String source;
-	
+
 }
 

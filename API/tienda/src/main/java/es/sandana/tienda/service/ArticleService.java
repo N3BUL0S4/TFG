@@ -17,37 +17,37 @@ public class ArticleService {
 
 	@Autowired
 	private ArticleRepository articleRepository;
-	
+
 	@Autowired
 	private ArticleMapper articleMapper;
-	
+
 	public ResponseArticleDTO getArticleById(Long id) {
-		
+
 		Optional<ArticleEntity> ArticleEntity = articleRepository.findById(id);
 		ResponseArticleDTO ArticleDTO = null;
-		
+
 		if(ArticleEntity.isPresent()) {
 			ArticleDTO =articleMapper.ArticleEntityToDto(ArticleEntity.get());
 		}
-		
+
 		return ArticleDTO;
-		
+
 	}
 
 	public List<ResponseArticleDTO> getAllArticle() {
-		
+
 		List<ArticleEntity> ArticleEntity = articleRepository.findAll();
 		List<ResponseArticleDTO> ArticlesDTO = null;
-		
+
 		if(!ArticleEntity.isEmpty()) {
 			ArticlesDTO = articleMapper.ArticleEntityToDtoList(ArticleEntity);
 		}
-		
+
 		return ArticlesDTO;
-		
+
 	}
-	
-	public ResponseArticleDTO createArticle(ResponseArticleDTO Article) {		
+
+	public ResponseArticleDTO createArticle(ResponseArticleDTO Article) {
 		ArticleEntity ArticleCreated = articleRepository.save(articleMapper.ArticleDtoToEntity(Article));
 		return articleMapper.ArticleEntityToDto(ArticleCreated);
 	}

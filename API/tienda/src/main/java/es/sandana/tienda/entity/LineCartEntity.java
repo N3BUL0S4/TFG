@@ -16,16 +16,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="media")
-public class MediaEntity {
+@Table(name="LineCart")
+public class LineCartEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
 
-    @Column(name="ID-ARTICLE")
+	@Column(name="id_article")
 	private Long articleId;
 
-    @Column(name="SOURCE")
-	private String source;
+	@Column(name="catidad")
+	private Long cantidad;
+	
+	@Column(name="id_cart")
+	private Long idCart;
 }

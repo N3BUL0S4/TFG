@@ -16,16 +16,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="media")
-public class MediaEntity {
+@Table(name="bill")
+public class BillEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long billId;
 
-    @Column(name="ID-ARTICLE")
-	private Long articleId;
+	@Column(name="fech")
+	private String fech;
 
-    @Column(name="SOURCE")
-	private String source;
+	@Column(name="hour")
+	private Long hour;
+
+	@Column(name="idUser")
+	private String idUser;
 }

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="users")
 public class UserEntity {
-    
+
     @Id
     @Column(name="email", nullable = false)
 	private String email;
@@ -26,4 +26,6 @@ public class UserEntity {
 
     @Column(name="rol")
 	private String rol;
+
+
 }

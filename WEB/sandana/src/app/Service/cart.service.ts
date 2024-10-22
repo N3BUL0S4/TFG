@@ -11,30 +11,47 @@ import { ArticleService } from './article.service';
 export class CartService { 
     carts:cart[]=[];
     articles:article[]=[];
-    cartId:Number=0;
 
     constructor(public http:HttpClient, public us:UserService, public as:ArticleService) {
-        this.cartId = us.user.cartId
-        let url="http://localhost:8081/Cart/findByArticleId?articleId={{articleId}}"
-        this.http.get<cart[]>(url)
-               .subscribe (response => {
-                if (response != null) {
-                    response.forEach(a => {
-                      this.carts.push(a)
-                    });
-                  }
-               })
-        this.carts.forEach(c => {
-          this.articles=as.GetById(c.idArticle)
-        }); 
+      let url = "http://localhost:8081/Cart/findAll"
+      this.http.get<cart[]>(url)
+             .subscribe (response => {
+              if (response != null) {
+                response.forEach(c => {
+                  this.carts.push(c)
+                  
+                });
+                console.log(this.carts)
+              }
+             })
     }
-    
 
-    create(cart: cart) {
-        let url="http://localhost:8081/Media/create"
-        this.http.post(url,cart)
-          .subscribe(response => {
-            console.log(response);
-          })
-      }
+    getCart() {
+      let cart:cart[]=[]
+      let cartId:Number = 0
+      let url="http://localhost:8081/LineCart/findAll"
+      this.carts.forEach(c => {
+        if (c.userId == this.us.getUser().email){
+          console.log(c.userId)
+          cartId = c.cartId
+        }
+      }); 
+      this.http.get<cart[]>(url)
+             .subscribe (response => {
+              console.log(response)
+              if (response != null) {
+                response.forEach(a => {
+                  if (a.cartId == cartId) {
+                    cart.push(a)    
+                  }
+                });
+              }
+            })
+      return cart; 
+    }
+
+
+    getArticle(ArticleId:Number) {
+      return this.as.GetById(ArticleId)
+    }
 }

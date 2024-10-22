@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.sandana.tienda.service.ArticleService;
 import es.sandana.tienda.dto.ResponseArticleDTO;
+import es.sandana.tienda.service.ArticleService;
 
 @RestController
 @RequestMapping("/Article")
@@ -30,7 +30,7 @@ public class ArticleController {
 		return article != null ? ResponseEntity.ok(article) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 	}
-	
+
 	@GetMapping("/findAll")
 	public ResponseEntity<List<ResponseArticleDTO>> getAllArticle() {
 

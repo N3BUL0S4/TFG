@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.sandana.tienda.service.UserService;
 import es.sandana.tienda.dto.ResponseUserDTO;
+import es.sandana.tienda.service.UserService;
 
 @RestController
 @RequestMapping("/user")
@@ -30,7 +30,7 @@ public class UserController {
 		return user != null ? ResponseEntity.ok(user) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 	}
-	
+
 	@GetMapping("/findAll")
 	public ResponseEntity<List<ResponseUserDTO>> getAllUser() {
 

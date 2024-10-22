@@ -17,37 +17,37 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	public ResponseUserDTO getUserById(String email) {
-		
+
 		Optional<UserEntity> userEntity = userRepository.findById(email);
 		ResponseUserDTO userDTO = null;
-		
+
 		if(userEntity.isPresent()) {
 			userDTO =userMapper.UserEntityToDto(userEntity.get());
 		}
-		
+
 		return userDTO;
-		
+
 	}
 
 	public List<ResponseUserDTO> getAllUser() {
-		
+
 		List<UserEntity> userEntity = userRepository.findAll();
 		List<ResponseUserDTO> usersDTO = null;
-		
+
 		if(!userEntity.isEmpty()) {
 			usersDTO = userMapper.UserEntityToDtoList(userEntity);
 		}
-		
+
 		return usersDTO;
-		
+
 	}
-	
-	public ResponseUserDTO createUser(ResponseUserDTO user) {		
+
+	public ResponseUserDTO createUser(ResponseUserDTO user) {
 		UserEntity userCreated = userRepository.save(userMapper.UserDtoToEntity(user));
 		return userMapper.UserEntityToDto(userCreated);
 	}

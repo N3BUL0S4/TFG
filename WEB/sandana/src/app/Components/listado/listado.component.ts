@@ -50,6 +50,7 @@ export class ListadoComponent {
     });
     console.log(articles)
     this.articleFiltered=articles
+    window.location.reload();
   }
 
   getModels(){

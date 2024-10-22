@@ -1,5 +1,4 @@
 package es.sandana.tienda.entity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,16 +15,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name="media")
-public class MediaEntity {
+@Table(name="LineBill")
+public class LineBillEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private static final long serialVersionUID = 1L;
 
-    @Column(name="ID-ARTICLE")
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long lineBillId;
+
+	@Column(name="billId")
+	private Long billId;
+
+	@Column(name="articleId")
 	private Long articleId;
 
-    @Column(name="SOURCE")
-	private String source;
+	@Column(name="amount")
+	private Long amount;
+
+	@Column(name="pvp")
+	private Long pvp;
+
 }

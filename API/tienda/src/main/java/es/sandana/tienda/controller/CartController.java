@@ -20,17 +20,18 @@ import es.sandana.tienda.service.CartService;
 @RequestMapping("/Cart")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CartController {
+
     @Autowired
 	private CartService cartService;
 
-	@GetMapping("/findByArticleId")
-	public ResponseEntity<List<ResponseCartDTO>> getCartByArticleId(@RequestParam Long articleId) {
+	@GetMapping("/findByCartId")
+	public ResponseEntity<ResponseCartDTO> getCartByCartId(@RequestParam Long cartId) {
 
-		List<ResponseCartDTO> cart = cartService.getCartByArticleId(articleId);
+		ResponseCartDTO cart = cartService.getCartByCartId(cartId);
 		return cart != null ? ResponseEntity.ok(cart) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 	}
-	
+
 	@GetMapping("/findAll")
 	public ResponseEntity<List<ResponseCartDTO>> getAllCart() {
 
@@ -40,7 +41,7 @@ public class CartController {
 	}
 
 	@PostMapping("/create")
-	public ResponseEntity<ResponseCartDTO> createMedia(@RequestBody ResponseCartDTO cartDTO){
+	public ResponseEntity<ResponseCartDTO> createCart(@RequestBody ResponseCartDTO cartDTO){
 		return ResponseEntity.status(HttpStatus.CREATED).body(cartService.createCart(cartDTO));
 	}
 }

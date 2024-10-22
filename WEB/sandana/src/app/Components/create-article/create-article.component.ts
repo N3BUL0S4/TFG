@@ -10,7 +10,7 @@ import { ArticleService } from '../../Service/article.service';
 })
 export class CreateArticleComponent {
   articleForm!: FormGroup;
-  article:article = new article(1,"","","","","","")
+  article:article = new article(1,"","","","","","",0)
 
   constructor(private fb: FormBuilder, public as:ArticleService) {}
 

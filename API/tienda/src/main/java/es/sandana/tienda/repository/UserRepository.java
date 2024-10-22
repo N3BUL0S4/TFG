@@ -9,5 +9,5 @@ import es.sandana.tienda.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity,String> {
 
 
-    
+
 }

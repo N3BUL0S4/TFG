@@ -1,8 +1,9 @@
+<app-navbar></app-navbar>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Carrito de Compras</h2>
   
     <!-- Tabla de productos del carrito -->
-    <div *ngIf="cartItems.length > 0; else emptyCart">
+    <div *ngIf="articles.length > 0; else emptyCart">
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
@@ -14,15 +15,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of articles; let i = index">
-            <td>{{ item.name }}</td>
-            <td>{{ item.price | currency }}</td>
+          <tr *ngFor="let a of ">
+            <td></td>  <!--{{ item.name }}-->
+            <td></td><!--  {{ item.price | currency }} -->
             <td>
-              <input type="number" min="1" class="form-control w-50" (change)="updateCart(i)" />
+              <input type="number" min="1" class="form-control w-50" (change)="updateCart()" />
             </td>
-            <td>{{ item.price * item.quantity | currency }}</td>
+             <td></td> <!-- {{ item.price * item.amount | currency }} -->
             <td>
-              <button class="btn btn-danger" (click)="removeItem(i)">Eliminar</button>
+              <button class="btn btn-danger" (click)="removeItem()">Eliminar</button>
             </td>
           </tr>
         </tbody>

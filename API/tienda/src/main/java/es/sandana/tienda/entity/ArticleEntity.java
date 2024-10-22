@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="articles")
 public class ArticleEntity {
-    
+
 
     @Id
     @Column(name="ID", nullable = false)
@@ -28,15 +28,18 @@ public class ArticleEntity {
     @Column(name="MODEL")
 	private String model;
 
+    @Column(name="SIZE")
+    private String size;
+
     @Column(name="COLOR")
 	private String color;
-
-    @Column(name="SIZE")
-	private String size;
 
     @Column(name="STOCK")
     private String stok;
 
     @Column(name="GENDER")
     private String gender;
+
+    @Column(name="PVP")
+    private String pvp;
 }

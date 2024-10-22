@@ -1,6 +1,7 @@
 package es.sandana.tienda.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,37 +16,38 @@ public class CartService {
 
 	@Autowired
 	private CartRepository cartRepository;
-	
+
 	@Autowired
 	private CartMapper cartMapper;
-	
-	public List<ResponseCartDTO> getCartByArticleId(Long articleId) {
-		
-		List<CartEntity> cartEntity = cartRepository.findByArticleId(articleId);
-		List<ResponseCartDTO> cartDTO = null;
-		
-		if(!cartEntity.isEmpty()) {
-			cartDTO = cartMapper.CartEntityToDtoList(cartEntity);
-		}
-		
-		return cartDTO;
-		
-	}
 
+	public ResponseCartDTO getCartByCartId(Long cartId) {
+
+		CartEntity cartEntity = cartRepository.getById(cartId);
+		ResponseCartDTO cartDTO = null;
+
+		if(cartEntity != null) {
+			cartDTO = cartMapper.CartEntityToDto(cartEntity);
+		}
+
+		return cartDTO;
+
+	}
+	
+	
 	public List<ResponseCartDTO> getAllCart() {
-		
+
 		List<CartEntity> CartEntity = cartRepository.findAll();
 		List<ResponseCartDTO> CartDTO = null;
-		
+
 		if(!CartEntity.isEmpty()) {
 			CartDTO = cartMapper.CartEntityToDtoList(CartEntity);
 		}
-		
+
 		return CartDTO;
-		
+
 	}
-	
-	public ResponseCartDTO createCart(ResponseCartDTO cart) {		
+
+	public ResponseCartDTO createCart(ResponseCartDTO cart) {
 		CartEntity cartCreated = cartRepository.save(cartMapper.CartDtoToEntity(cart));
 		return cartMapper.CartEntityToDto(cartCreated);
 	}

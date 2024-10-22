@@ -37,9 +37,9 @@ export class ArticleService {
   }
 
   GetById(id:Number){
-    let result=false;
+    let url="http://localhost:8081/Article/findById?articleId=" + id
     let articles:article[] = []
-    this.http.get<article[]>(this.url)
+    this.http.get<article[]>(url)
            .subscribe (response => {
             if (response != null) {
               articles=response

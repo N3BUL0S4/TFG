@@ -11,15 +11,14 @@ import { user } from '../../Models/user';
 export class NavbarComponent {
 
   constructor(public ruta:Router, public us:UserService){
-    console.log(us.user.rol.length)
   }
   
   login() {
     this.ruta.navigate(['login']);
   }
 
-  logOut(){
-    this.us.user= new user("","","");
+ logOut(){
+    this.us.logOut();
     window.location.reload();
   }
 }

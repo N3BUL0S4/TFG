@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,18 +15,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name="cart")
 public class CartEntity {
-	
+
 	 	@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Long id;
+	 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Long idCart;
 
-	 	@Column(name="Id-Cart")
-	 	private Long cartId;
-	 	
-	    @Column(name="Id-article")
-		private Long articleId;
+	    @Column(name="idUser")
+		private String idUser;
 
-	    @Column(name="amount")
-		private Long amount;
 }
