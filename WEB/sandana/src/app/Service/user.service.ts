@@ -30,23 +30,28 @@ export class UserService {
       })
   }
 
-  getUser() {
+  async getUser() {
     let email = localStorage.getItem("email");
-    if (email && email != "") {
-    let url="http://localhost:8081/user/findById?UserId="+email;
+    if (email && email !== "") {
+        let url = "http://localhost:8081/user/findById?UserId="+email;
         console.log(email);
-        this.http.get<user>(url).subscribe(response => {
-            if(response) {
+        try {
+            const response = await this.http.get<user>(url).toPromise();
+            if (response) {
                 this.user = response;
+                return this.user;
             } else {
                 console.error("User not found.");
+                return null;
             }
-        }, error => {
+        } catch (error) {
             console.error("Error fetching user", error);
-        });
+            return null;
+        }
     }
-    return this.user;
+    return null;
 }
+
 
   logOut() {
     localStorage.removeItem("email");

@@ -17,10 +17,7 @@ export class CartService {
       this.http.get<cart[]>(url)
              .subscribe (response => {
               if (response != null) {
-                response.forEach(c => {
-                  this.carts.push(c)
-                  
-                });
+               this.carts=response
                 console.log(this.carts)
               }
              })
@@ -31,10 +28,8 @@ export class CartService {
       let cartId:Number = 0
       let url="http://localhost:8081/LineCart/findAll"
       this.carts.forEach(c => {
-        if (c.userId == this.us.getUser().email){
           console.log(c.userId)
           cartId = c.cartId
-        }
       }); 
       this.http.get<cart[]>(url)
              .subscribe (response => {

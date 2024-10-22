@@ -10,15 +10,33 @@ import { user } from '../../Models/user';
 })
 export class NavbarComponent {
 
-  constructor(public ruta:Router, public us:UserService){
-  }
-  
-  login() {
-    this.ruta.navigate(['login']);
+  user:user|null
+
+  constructor(public ruta: Router, public us: UserService) {
+    this.user = new user("","","")
+    this.initializeUser();
   }
 
- logOut(){
-    this.us.logOut();
-    window.location.reload();
+  async initializeUser() {
+      try {
+          this.user = await this.us.getUser();
+          if (this.user) {
+              console.log("User retrieved successfully:", this.user);
+          } else {
+              console.log("User not found.");
+          }
+      } catch (error) {
+          console.error("Error occurred while getting user:", error);
+      }
+  }
+
+  login() {
+      this.ruta.navigate(['login']);
+  }
+
+  logOut() {
+      this.us.logOut();
+      window.location.reload();
   }
 }
+
