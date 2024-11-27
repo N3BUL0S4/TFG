@@ -1,4 +1,4 @@
-export class media{
+export class Media{
     id: Number
     articleId:Number
     source:String

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ArticleService } from '../../Service/article.service';
-import { article } from '../../Models/article';
-import { media } from '../../Models/media';
+import { Article } from '../../Models/Article';
+import { Media } from '../../Models/media';
 import { MediaService } from '../../Service/media.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { MediaService } from '../../Service/media.service';
   styleUrl: './listado.component.css'
 })
 export class ListadoComponent {
-  articles: article[]=[];
-  articleFiltered:article[] = []
-  medias:media[]=[];
-  mediasId:media[]=[];
+  articles: Article[]=[];
+  articleFiltered:Article[] = []
+  medias:Media[]=[];
+  mediasId:Media[]=[];
 
   constructor(public ms:MediaService, public as:ArticleService) {
     this.articles = as.articles
@@ -41,7 +41,7 @@ export class ListadoComponent {
 
   Aplicarfiltro(hombre:any,mujer:any,modelo:any) {
     this.articleFiltered=[]
-    let articles:article[]= []
+    let articles:Article[]= []
     console.log(modelo.value)
     this.articles.forEach(a => {
       if (a.description.toLowerCase() == modelo.value.toLowerCase()) {

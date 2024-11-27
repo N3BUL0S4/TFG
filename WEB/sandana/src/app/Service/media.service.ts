@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { media } from '../Models/media';
+import { Media } from '../Models/media';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MediaService {
-  medias:media[]=[]
+  medias:Media[]=[]
   constructor(public http:HttpClient) { 
     let url="http://localhost:8081/Media/findAll"
-    this.http.get<media[]>(url)
+    this.http.get<Media[]>(url)
            .subscribe (response => {
             if (response != null) {
               response.forEach(a => {
@@ -21,8 +21,8 @@ export class MediaService {
 
   findAllbyArticleId(articleId: Number) {
     let url="http://localhost:8081/Media/findByArticleId?articleId={{articleId}}"
-    let m:media[]=[]
-    this.http.get<media[]>(url)
+    let m:Media[]=[]
+    this.http.get<Media[]>(url)
            .subscribe (response => {
             if (response != null) {
               response.forEach(a => {
@@ -33,7 +33,7 @@ export class MediaService {
     return m
     }
 
-    create(media: media) {
+    create(media: Media) {
       let url="http://localhost:8081/Media/create"
       this.http.post(url,media)
         .subscribe(response => {

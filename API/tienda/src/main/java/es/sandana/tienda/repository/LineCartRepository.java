@@ -12,4 +12,6 @@ import es.sandana.tienda.entity.LineCartEntity;
 @Repository
 public interface LineCartRepository extends JpaRepository<LineCartEntity,Long>{
 	
+	@Query
+	List<LineCartEntity> findLineCartByCartId(Long cartId);
 }

@@ -1,6 +1,6 @@
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './Components/index/index.component';
@@ -28,7 +28,8 @@ import { CarritoComponent } from './Components/carrito/carrito.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

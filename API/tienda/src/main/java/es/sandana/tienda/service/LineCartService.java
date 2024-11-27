@@ -59,10 +59,14 @@ public class LineCartService {
 
 	}
 
-	public ResponseLineCartDTO createLineBill(ResponseLineCartDTO LineCart) {
+	public ResponseLineCartDTO createLineCart(ResponseLineCartDTO LineCart) {
 		LineCartEntity CartCreated = lineCartRepository.save(lineCartMapper.LineCartDtoToEntity(LineCart));
 		return lineCartMapper.LineCartEntityToDto(CartCreated);
 	}
 
+	public void deleteLineCart(Long LineCartId) {
+		lineCartRepository.deleteById(LineCartId);
+	}
 
+	
 }

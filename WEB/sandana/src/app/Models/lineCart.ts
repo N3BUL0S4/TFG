@@ -1,13 +1,13 @@
-export class lineCart {
+export class LineCart {
     id: Number;
     articleId: Number;
-    amount: Number;
+    cantidad: number;
     cartId: Number;
 
-    constructor(id: Number, articleId: Number, amount: Number, cartId: Number) {
+    constructor(id: Number, articleId: Number, cantidad: number, cartId: Number) {
         this.id = id;
         this.articleId = articleId;
-        this.amount = amount;
+        this.cantidad = cantidad;
         this.cartId = cartId;
     }
 }

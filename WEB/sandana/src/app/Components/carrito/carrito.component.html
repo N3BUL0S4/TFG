@@ -3,7 +3,7 @@
     <h2 class="text-center mb-4">Carrito de Compras</h2>
   
     <!-- Tabla de productos del carrito -->
-    <div *ngIf="articles.length > 0; else emptyCart">
+    <div *ngIf="carts.length > 0; else emptyCart">
       <table class="table table-striped">
         <thead class="thead-dark">
           <tr>
@@ -14,18 +14,18 @@
             <th scope="col">Acción</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let a of ">
-            <td></td>  <!--{{ item.name }}-->
-            <td></td><!--  {{ item.price | currency }} -->
-            <td>
-              <input type="number" min="1" class="form-control w-50" (change)="updateCart()" />
-            </td>
-             <td></td> <!-- {{ item.price * item.amount | currency }} -->
-            <td>
-              <button class="btn btn-danger" (click)="removeItem()">Eliminar</button>
-            </td>
-          </tr>
+        <tbody *ngFor="let a of this.carts">
+            <tr >
+              <td>{{getArticle(a)?.description}}</td>  <!--{{ item.name }}-->
+              <td>{{getArticle(a)?.pvp}}</td><!--  {{ item.price | currency }} -->
+              <td>
+                <input type="number" min="1" class="form-control w-50" (change)="updateCart(a)" [(ngModel)]="a.cantidad" />
+              </td>
+              <td>{{getSubtotal(getArticle(a).pvp,a.cantidad)}}</td> <!-- {{ item.price * item.amount | currency }} -->
+              <td>
+                <button class="btn btn-danger" (click)="removeItem()">Eliminar</button>
+              </td>
+            </tr>
         </tbody>
       </table>
   

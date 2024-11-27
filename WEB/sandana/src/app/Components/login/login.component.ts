@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../Service/user.service';
-import { user } from '../../Models/user';
+import { User } from '../../Models/User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent{
-  users:user[]=[]
-  user:user = new user("","","")
+  users:User[]=[]
+  user:User = new User("","","")
   loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, public us: UserService, public ruta:Router) {
@@ -29,7 +29,7 @@ export class LoginComponent{
   onSubmit(): void {
     if (this.loginForm.valid) {
       console.log('Formulario válido:', this.loginForm.value);
-      let user:user = this.user
+      let user:User = this.user
       user.email = this.loginForm.value.email;
       user.passwd = this.loginForm.value.password;      
       this.users.forEach(u => {

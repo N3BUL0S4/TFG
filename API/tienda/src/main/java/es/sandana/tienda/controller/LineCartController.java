@@ -32,6 +32,13 @@ public class LineCartController {
 		return LineBill != null ? ResponseEntity.ok(LineBill) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 	}
+	
+	@GetMapping("/deleteById")
+	public void deleteLineCartById(@RequestParam  Long lineCartId) {
+		if (lineCartId != 0 && lineCartId != null) {
+			lineCartService.deleteLineCart(lineCartId);
+		}
+	}
 
 	@GetMapping("/findAll")
 	public ResponseEntity<List<ResponseLineCartDTO>> getAllLineCart() {
@@ -51,6 +58,6 @@ public class LineCartController {
 
 	@PostMapping("/create")
 	public ResponseEntity<ResponseLineCartDTO> createLineCart(@RequestBody ResponseLineCartDTO LineCartDTO){
-		return ResponseEntity.status(HttpStatus.CREATED).body(lineCartService.createLineBill(LineCartDTO));
+		return ResponseEntity.status(HttpStatus.CREATED).body(lineCartService.createLineCart(LineCartDTO));
 	}
 }

@@ -1,4 +1,4 @@
-export class article{
+export class Article{
     
     id:Number
     description:String
@@ -7,9 +7,9 @@ export class article{
     color:String
     stock:String
     gender:String
-    pvp:Number
+    pvp:number
 
-    constructor(id:Number, description:String, model:String, size:String, color:String, stock:String, gender:String, pvp:Number) {
+    constructor(id:Number, description:String, model:String, size:String, color:String, stock:String, gender:String, pvp:number) {
         this.id = id
         this.description = description
         this.model = model

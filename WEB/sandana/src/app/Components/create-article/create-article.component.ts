@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { article } from '../../Models/article';
+import { Article } from '../../Models/Article';
 import { ArticleService } from '../../Service/article.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ArticleService } from '../../Service/article.service';
 })
 export class CreateArticleComponent {
   articleForm!: FormGroup;
-  article:article = new article(1,"","","","","","",0)
+  article:Article = new Article(1,"","","","","","",0)
 
   constructor(private fb: FormBuilder, public as:ArticleService) {}
 

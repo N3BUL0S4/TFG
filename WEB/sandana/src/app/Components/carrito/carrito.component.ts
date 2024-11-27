@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { cart } from '../../Models/carts';
+import { Cart } from '../../Models/Cart';
 import { CartService } from '../../Service/cart.service';
-import { article } from '../../Models/article';
-import { user } from '../../Models/user';
+import { Article } from '../../Models/Article';
+import { User } from '../../Models/User';
 import { UserService } from '../../Service/user.service'
+import { LineCart } from '../../Models/LineCart';
 
 @Component({
   selector: 'app-carrito',
@@ -13,29 +14,49 @@ import { UserService } from '../../Service/user.service'
 
 export class CarritoComponent {
 
-  user:user = new user("","","");
-  carts:cart[]=[];
-  articles:article[]=[]
+  user:User = new User("","","");
+  carts:LineCart[] = [];
+  articles:Article[]=[]
+  article:Article = new Article(0,"","","","","","",0)
 
-  constructor(private cs:CartService, private us:UserService){ 
-    this.carts=cs.getCart();
+  constructor(private cs: CartService, private us: UserService) {
+    this.loadLineCarts();
+  }
+  
+  async loadLineCarts() {
+    this.carts = await this.cs.getLineCart(); // Asegúrate de que getLineCart devuelve una promesa
     console.log(this.carts);
   }
 
-  // Array que simula productos en el carrito
+  getArticle(lineCart: LineCart)  {
+    console.log(lineCart);
+    if (this.article!= null){
+      if (this.article.id == 0 || this.article.id != lineCart.articleId) {
+        this.loadArticle(lineCart).then((a) => {
+          this.article = a
+        })  
+      }
+      console.log(this.article)
+    }
+    console.log(this.article)
+    return this.article
+  }
 
+  async loadArticle(lineCart: LineCart) {
+    let article = await this.cs.getArticle(lineCart.articleId)
+    return article
+  }
 
-  // Calcula el precio total del carrito
   getTotalPrice() {
     return 0;
   }
 
-  // Actualiza el carrito al cambiar la cantidad
-   updateCart() {
-//     const item = this.carts[index];
-//     if (item.amount < 1) {
-//       item.amount = 1; // Evitar cantidades menores a 1
-//     }
+  getSubtotal(pvp:number, cant:number) {
+    return (pvp*cant)
+  }
+   updateCart(lineCart: LineCart) {
+      this.cs.updateCart(lineCart)
+      console.log(lineCart)
    }
 
   // Elimina un producto del carrito

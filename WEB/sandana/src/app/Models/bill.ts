@@ -1,4 +1,4 @@
-export class bill {
+export class Bill {
     billId: Number
     fech: Date
     hour: Number

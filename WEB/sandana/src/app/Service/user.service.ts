@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { user } from '../Models/user';
+import { User } from '../Models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  users:user[]=[]
-  user:user = new user("","","");
+  users:User[]=[]
+  user:User = new User("","","");
  
   
   constructor(public http:HttpClient) { 
     let url="http://localhost:8081/user/findAll"
-    this.http.get<user[]>(url)
+    this.http.get<User[]>(url)
            .subscribe (response => {
             if (response != null) {
               response.forEach(a => {
@@ -22,7 +22,7 @@ export class UserService {
            })
   }
 
-  create(user:user) {
+  create(user:User) {
     let url = "http://localhost:8081/user/create"
     this.http.post(url,user)
       .subscribe(response => {
@@ -34,22 +34,21 @@ export class UserService {
     let email = localStorage.getItem("email");
     if (email && email !== "") {
         let url = "http://localhost:8081/user/findById?UserId="+email;
-        console.log(email);
         try {
-            const response = await this.http.get<user>(url).toPromise();
+            const response = await this.http.get<User>(url).toPromise();
             if (response) {
                 this.user = response;
                 return this.user;
             } else {
                 console.error("User not found.");
-                return null;
+                return new User("", "", "");
             }
         } catch (error) {
             console.error("Error fetching user", error);
-            return null;
+            return new User("", "", "");
         }
     }
-    return null;
+    return new User("", "", "");
 }
 
 
@@ -57,7 +56,7 @@ export class UserService {
     localStorage.removeItem("email");
   }
 
-  saveUser(user:user) {
+  saveUser(user:User) {
     this.user=user
     localStorage.setItem("email", user.email);
   }

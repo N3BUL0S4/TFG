@@ -33,6 +33,18 @@ public class CartService {
 
 	}
 	
+	public ResponseCartDTO findCartByUserId(String userId) {
+
+		CartEntity cartEntity = cartRepository.findCartByUserId(userId);
+		ResponseCartDTO cartDTO = null;
+
+		if(cartEntity != null) {
+			cartDTO = cartMapper.CartEntityToDto(cartEntity);
+		}
+
+		return cartDTO;
+
+	}
 	
 	public List<ResponseCartDTO> getAllCart() {
 
@@ -46,7 +58,7 @@ public class CartService {
 		return CartDTO;
 
 	}
-
+	
 	public ResponseCartDTO createCart(ResponseCartDTO cart) {
 		CartEntity cartCreated = cartRepository.save(cartMapper.CartDtoToEntity(cart));
 		return cartMapper.CartEntityToDto(cartCreated);

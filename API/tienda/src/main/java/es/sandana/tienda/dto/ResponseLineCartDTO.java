@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 public class ResponseLineCartDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long Id;
+	private Long id;
 	private Long articleId;
 	private Long cantidad;
+	private Long cartId;
 }

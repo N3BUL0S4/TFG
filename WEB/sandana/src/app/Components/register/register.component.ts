@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { user } from '../../Models/user';
+import { User } from '../../Models/User';
 import { UserService } from '../../Service/user.service';
 import { Router } from '@angular/router';
 
@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   registerForm!: FormGroup;
-  users:user[]=[];
-  user:user = new user("","","");
+  users:User[]=[];
+  user:User = new User("","","");
 
   constructor(private fb: FormBuilder, public us:UserService, public ruta:Router) {
     this.users = us.users;
@@ -28,7 +28,7 @@ export class RegisterComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      let user:user = this.user
+      let user:User = this.user
       user.email = this.registerForm.value.email;
       user.passwd = this.registerForm.value.password;
       user.rol = this.registerForm.value.role

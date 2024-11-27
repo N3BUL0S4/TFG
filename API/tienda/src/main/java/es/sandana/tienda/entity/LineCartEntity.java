@@ -21,6 +21,7 @@ public class LineCartEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Long Id;
 
 	@Column(name="id_article")
@@ -30,5 +31,5 @@ public class LineCartEntity {
 	private Long cantidad;
 	
 	@Column(name="id_cart")
-	private Long idCart;
+	private Long cartId;
 }

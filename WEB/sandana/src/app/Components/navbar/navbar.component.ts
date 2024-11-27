@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../Service/user.service';
-import { user } from '../../Models/user';
+import { User } from '../../Models/User';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +10,10 @@ import { user } from '../../Models/user';
 })
 export class NavbarComponent {
 
-  user:user|null
+  user:User|null
 
   constructor(public ruta: Router, public us: UserService) {
-    this.user = new user("","","")
+    this.user = new User("","","")
     this.initializeUser();
   }
 

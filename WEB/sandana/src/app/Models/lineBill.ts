@@ -1,4 +1,4 @@
-export class lineBill {
+export class LineBill {
     id:Number
     amount:Number
     articleId:Number

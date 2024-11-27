@@ -1,4 +1,4 @@
-export class user{
+export class User{
     email:string
     passwd:String
     rol:String

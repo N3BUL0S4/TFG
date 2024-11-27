@@ -32,6 +32,14 @@ public class CartController {
 
 	}
 
+	@GetMapping("/findCartByUserId")
+	public ResponseEntity<ResponseCartDTO> findCartByUserId(@RequestParam String userId) {
+
+		ResponseCartDTO cart = cartService.findCartByUserId(userId);
+		return cart != null ? ResponseEntity.ok(cart) : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+	}
+	
 	@GetMapping("/findAll")
 	public ResponseEntity<List<ResponseCartDTO>> getAllCart() {
 
