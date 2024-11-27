@@ -15,9 +15,9 @@
           </tr>
         </thead>
         <tbody *ngFor="let a of this.carts">
-            <tr >
-              <td>{{getArticle(a)?.description}}</td>  <!--{{ item.name }}-->
-              <td>{{getArticle(a)?.pvp}}</td><!--  {{ item.price | currency }} -->
+            <tr>
+              <td>{{getArticle(a).description}}</td> 
+              <td>{{getArticle(a).pvp}}</td><!--  {{ item.price | currency }} -->
               <td>
                 <input type="number" min="1" class="form-control w-50" (change)="updateCart(a)" [(ngModel)]="a.cantidad" />
               </td>

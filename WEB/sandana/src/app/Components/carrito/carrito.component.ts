@@ -15,30 +15,33 @@ import { LineCart } from '../../Models/LineCart';
 export class CarritoComponent {
 
   user:User = new User("","","");
-  carts:LineCart[] = [];
+  carts:LineCart[] = []
   articles:Article[]=[]
   article:Article = new Article(0,"","","","","","",0)
 
   constructor(private cs: CartService, private us: UserService) {
     this.loadLineCarts();
+    
   }
   
   async loadLineCarts() {
     this.carts = await this.cs.getLineCart(); // Asegúrate de que getLineCart devuelve una promesa
-    console.log(this.carts);
+    this.loadArticles();  
   }
-
-  getArticle(lineCart: LineCart)  {
-    console.log(lineCart);
-    if (this.article!= null){
-      if (this.article.id == 0 || this.article.id != lineCart.articleId) {
-        this.loadArticle(lineCart).then((a) => {
-          this.article = a
-        })  
-      }
-      console.log(this.article)
-    }
-    console.log(this.article)
+  loadArticles() {
+    this.carts.forEach(c => {
+      this.loadArticle(c).then((result) => {
+        this.articles.push(result) 
+      });
+    });
+    
+  }
+  getArticle(lineCart: LineCart): Article {
+    
+    this.articles.forEach(element => {
+      if(element.id == lineCart.articleId)
+        this.article=element
+    });
     return this.article
   }
 
