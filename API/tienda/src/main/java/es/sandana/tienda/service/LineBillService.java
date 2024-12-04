@@ -46,6 +46,8 @@ public class LineBillService {
 
 	}
 
+	
+	
 	public ResponseLineBillDTO createLineBill(ResponseLineBillDTO LineBill) {
 		LineBillEntity BillCreated = lineBillRepository.save(lineBillMapper.LineBillDtoToEntity(LineBill));
 		return lineBillMapper.LineBillEntityToDto(BillCreated);

@@ -3,6 +3,7 @@ import { ArticleService } from '../../Service/article.service';
 import { Article } from '../../Models/Article';
 import { Media } from '../../Models/media';
 import { MediaService } from '../../Service/media.service';
+import { CartService } from '../../Service/cart.service';
 
 @Component({
   selector: 'app-listado',
@@ -15,7 +16,7 @@ export class ListadoComponent {
   medias:Media[]=[];
   mediasId:Media[]=[];
 
-  constructor(public ms:MediaService, public as:ArticleService) {
+  constructor(public ms:MediaService, public as:ArticleService, public cs:CartService) {
     this.articles = as.articles
     this.articleFiltered = as.articles
     this.medias = this.ms.medias
@@ -51,6 +52,10 @@ export class ListadoComponent {
     console.log(articles)
     this.articleFiltered=articles
     window.location.reload();
+  }
+
+  addCart(id:Number){
+    this.cs.addLineCart(id)
   }
 
   getModels(){

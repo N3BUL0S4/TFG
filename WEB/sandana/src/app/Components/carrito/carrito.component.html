@@ -23,7 +23,7 @@
               </td>
               <td>{{getSubtotal(getArticle(a).pvp,a.cantidad)}}</td> <!-- {{ item.price * item.amount | currency }} -->
               <td>
-                <button class="btn btn-danger" (click)="removeItem()">Eliminar</button>
+                <button class="btn btn-danger" (click)="removeItem(a.id)">Eliminar</button>
               </td>
             </tr>
         </tbody>

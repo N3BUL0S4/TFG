@@ -8,4 +8,4 @@ export class User{
         this.passwd = passwd
         this.rol = rol
     }
-}
+} 

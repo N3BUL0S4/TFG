@@ -76,11 +76,11 @@ export class CartService {
           const cart: Cart = { idUser: "", idCart: 0 }; // Inicializa el cart
           if (response) {
             response.forEach(a => {
-              console.log(a)
+
               if (a.idUser == user.email) {
                 cart.idUser = a.idUser;
                 cart.idCart = a.idCart;
-                console.log(cart)
+
               }
             });
           }
@@ -102,6 +102,40 @@ export class CartService {
         })
     }
   
+    removeCart(id:Number){
+      let url="http://localhost:8081/LineCart/deleteById?lineCartId="+id
+      this.http.get<any>(url)
+             .subscribe (response => {
+               console.log(response);
+             })
+    }
+
+    async addLineCart(id:Number) {
+      let lineCart = new LineCart(0,id,1,0)
+      let user=new User("","","")
+      lineCart.articleId = id;
+      await this.us.getUser().then((result) => {
+        console.log(result)
+        user=result
+      });
+
+      const cart = await new Promise<Cart>((resolve, reject) => {
+        this.getCart(user).subscribe(
+          cart => resolve(cart),
+          error => reject(error)
+        );
+      });
+      
+      lineCart.cartId = cart.idCart;
+
+      console.log(lineCart)
+      let url="http://localhost:8081/LineCart/create"
+      this.http.post(url,lineCart)
+        .subscribe(response => {
+          console.log(response);
+        })
+    }
+
     async initializeUser() {
       try {
           this.user = await this.us.getUser();

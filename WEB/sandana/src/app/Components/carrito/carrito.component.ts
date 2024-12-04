@@ -58,13 +58,13 @@ export class CarritoComponent {
     return (pvp*cant)
   }
    updateCart(lineCart: LineCart) {
-      this.cs.updateCart(lineCart)
-      console.log(lineCart)
+    console.log(lineCart)
    }
 
   // Elimina un producto del carrito
-   removeItem() {
-//     this.carts.splice(index, 1);
+   removeItem(id: Number) {
+    this.cs.removeCart(id)
+    window.location.reload();
    }
 
   // Simula el proceso de checkout
